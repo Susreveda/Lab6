@@ -74,6 +74,10 @@ class JournalEntry extends HTMLElement {
     
     // CODE GOES HERE
 
+    this.shadowRoot.querySelector('h2').innerHTML = entry.title;
+    this.shadowRoot.querySelectorAll('p')[0].innerHTML = entry.date;
+    this.shadowRoot.querySelectorAll('p')[1].innerHTML = entry.content;
+
     if (entry.image) {
       let entryImage;
       /*
@@ -85,6 +89,12 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
+      entryImage = document.createElement('img');
+      entryImage.setAttribute('class', 'entry-image');
+      entryImage.src = entry.image.src;
+      entryImage.alt = entry.image.alt;
+
+      this.shadowRoot.querySelector('article').appendChild(entryImage);
 
 
 
@@ -110,6 +120,13 @@ class JournalEntry extends HTMLElement {
        */
 
       // CODE GOES HERE vvv
+
+      entryAudio = document.createElement('audio');
+      entryAudio.setAttribute('class', 'entry-audio');
+      entryAudio.src = entry.audio;
+      entryAudio.controls = true;
+
+      this.shadowRoot.querySelector('article').appendChild(entryAudio);
 
 
 
